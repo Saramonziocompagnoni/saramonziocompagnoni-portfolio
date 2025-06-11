@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sara Monzio Compagnoni — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-bg: #0f0f0f;
+      --dark-text: #f0f0f0;
+      --light-bg: #ffffff;
+      --light-text: #111111;
+      --accent: #f26a4b;
+    }
+
+    [data-theme="dark"] {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    [data-theme="light"] {
+      background: var(--light-bg);
+      color: var(--light-text);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    button#theme-toggle {
+      padding: 0.4rem 1rem;
+      border: 1px solid currentColor;
+      border-radius: 25px;
+      background: none;
+      color: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    section {
+      max-width: 800px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero-title">Sara Monzio Compagnoni</div>
+    <div class="hero-sub">Marketing & Communication in Fashion</div>
+    <button id="theme-toggle">Toggle Theme</button>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Fashion-forward thinker with a strategic mindset and a passion for storytelling. Specializing in marketing, events and brand development with a meticulous eye for design.
+      </p>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p>
+        Soon: A selection of projects ranging from fashion campaigns, event concepts, social strategy, and brand experience — crafted to connect with contemporary audiences.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: saramonziocompagnoni@email.com<br />
+         LinkedIn: <a href="https://www.linkedin.com/in/saramonziocompagnoni" target="_blank">saramonziocompagnoni</a><br />
+         Instagram: <a href="https://instagram.com/saramonziocompagnoni" target="_blank">@saramonziocompagnoni</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Sara Monzio Compagnoni — Portfolio
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    });
+
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) {
+          sec.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+  </script>
+</body>
+</html>
